@@ -3,7 +3,7 @@
 This is my step-by-step solution to "Volume 1 has become read-only" on BRTFS volume on Synology DSM7.
 
 # Important Notes: 
-* This is a solution that worked FOR ME. I am not taking responsibility for any data loss. `btrfsck` 
+* This is a solution that worked FOR ME. I am not taking responsibility for any data loss.
 * It is a modified manual from https://github.com/jmiller0/how-to-fsck-on-synology-dsm7, but since it covers different filesystem I found it suitable to publish it separately
 
 # Symptoms
