@@ -48,7 +48,9 @@ control  vg1-syno_vg_reserved_area  vg1-volume_1
 
 #### 5. Run btrfsck repair command:
 
-```sudo btrfsck --repair /dev/mapper/vg1-volume_1 -p```
+```
+sudo btrfsck --repair /dev/mapper/vg1-volume_1 -p
+```
 
 If you encounter an error `couldn't open RDWR because of unsupported option features (3)`, run commands below and retry:
 
