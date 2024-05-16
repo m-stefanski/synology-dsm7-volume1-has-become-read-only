@@ -31,9 +31,22 @@ sudo synosetkeyvalue /etc/synoinfo.conf disable_volumes volume1
 
 #### 2. Restart DSM7 from web interface and reconnect SSH tunnel
 
-#### 3. Confirm volume path, via `sudo dmsetup table`, its name should be visible when running `ls /dev/mapper`
+#### 3. Confirm volume path
 
-#### 4. Run btrfsck repair command:
+```
+$ sudo dmsetup table
+vg1-syno_vg_reserved_area: 0 24576 linear 9:2 1152
+vg1-volume_1: 0 15607005184 linear 9:2 25728 
+```
+
+#### 4. Its name should be visible in `/dev/mapper`
+
+```
+$ ls /dev/mapper 
+control  vg1-syno_vg_reserved_area  vg1-volume_1
+```
+
+#### 5. Run btrfsck repair command:
 
 ```sudo btrfsck --repair /dev/mapper/vg1-volume_1 -p```
 
@@ -46,7 +59,7 @@ sudo btrfsck --clear-space-cache v2 /dev/mapper/vg1-volume_1 -p
 
 **NOTE:** `--clear-space-cache` is supposedly deprecated, btrfsck man page suggests using `btrfs rescue clear-space-cache`, however commands above worked for me.
 
-#### 5. If `btrfsck` finishes with no errors, mount repaired volume
+#### 6. If `btrfsck` finishes with no errors, mount repaired volume
 
 ```mount /volume1```
 
